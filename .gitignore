@@ -2,3 +2,4 @@
 .terraform/
 ops/priv/
 ops/terraform.tfstate*
+ops/.terraform*
