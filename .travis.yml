@@ -1,16 +1,13 @@
 language: python
 sudo: required
-
 cache:
-  - apt
-
+- apt
 addons:
   apt:
     packages:
-      - nginx
-      - curl
-      - wget
-      
+    - nginx
+    - curl
+    - wget
 install:
 - sudo bash -x scripts/provision.sh
 - sudo curl -sL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
@@ -21,3 +18,11 @@ script:
 - cd ops
 - terraform fmt
 - terraform init
+deploy:
+  provider: releases
+  api_key:
+    secure: h42D7UdECXAWuHtRPff3yGLqCmRhPy9yNQYE64V7VhcEk3joNDbDC0qnzPS3/y4ufOcivFY/ZJVuR9rwOC7jBNG2Jpl3+cqukyBhW/FgGN+TsFvlLoqbvHf9BSkd/bHWVS9fjHSpeVn1BGkZIDKJDQBsYworlNGjx8SVA0uVCWyfoVecfQF3Ngd5TBifizP43V9FsaGaCWwr3TFZJaYdHM6ijaFH/S6qkSwR1aM9RCWGOTas4LmSgtA7K4n/xygLZgaZZiAa9aPtUznUj329hPM0SjYY176z1Of7na6NcrNmlTNAqT4T+gaD5cVFtRslCNJ019wu5BV7ATOFEWnM4B/nWUyYmaomgAtpwOr6UKW+LhTs/tijnvdAmwGmDbqDwpoCr0oNkjGUyTiSktEOS4OEiQMRBnzPGU0Gt/ivylktlmJfnTR6XsmCVkSVj3fybuKht7nBRYK/gLabwO2zLpMhktS3tCOLDYIhy597fuQzhIPc67Ih12TnU/6G2kjpC1by/lWNnHB1ydhH+CFc3VCiaOyQ8DkxTm2i47Uoeo1Rovgn5KgwrUwiHrzQ9ZDIUJcIUqkbuSVnOpQnXie6RkTv+0D3IsIYgPbTO0pwDyPwn2HpUpMl2PKcAuCKppBHEnRKjFDJApXyh8vukqWf3goG59Eu77av8BAlW5SQAnk=
+  file: index.html
+  on:
+    repo: kikitux/myweb1
+    tags: true
