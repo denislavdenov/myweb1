@@ -16,9 +16,22 @@ which nginx || {
   apt-get install -y nginx
 }
 
+# stop nginx service
+service nginx stop
+
+# remove default conf of nginx
+[ -f /etc/nginx/sites-available/default ] && {
+  rm -fr /etc/nginx/sites-available/default
+}
+
+# copy our nginx conf
+cp nginx.conf /etc/nginx/sites-available/default
+
 # start nginx service
 service nginx start
 
 # deploy our zillion dollar website
 mkdir -p /var/www/html/
-cp /vagrant/index.html /var/www/html/index.html
+
+cp index.html /var/www/html/index.html
+
