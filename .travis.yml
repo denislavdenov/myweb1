@@ -14,3 +14,6 @@ install:
 script:
 - curl -sL http://127.0.0.1:80
 - curl -sL http://127.0.0.1:80 | grep 'Visit Bulgaria.'
+- cd ops
+- terraform fmt
+- terraform init
