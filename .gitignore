@@ -1,1 +1,4 @@
 .vagrant/
+.terraform/
+ops/priv/
+ops/terraform.tfstate*
