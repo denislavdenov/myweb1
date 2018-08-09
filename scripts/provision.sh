@@ -21,4 +21,6 @@ service nginx start
 
 # deploy our zillion dollar website
 mkdir -p /var/www/html/
-cp /vagrant/index.html /var/www/html/index.html
+
+cp index.html /var/www/html/index.html
+
