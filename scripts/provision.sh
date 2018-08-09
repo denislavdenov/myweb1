@@ -25,7 +25,7 @@ service nginx stop
 }
 
 # copy our nginx conf
-cp /vagrant/nginx.conf /etc/nginx/sites-available/default
+cp nginx.conf /etc/nginx/sites-available/default
 
 # start nginx service
 service nginx start
