@@ -16,7 +16,27 @@ resource "packet_device" "vmonpacket" {
   billing_cycle    = "hourly"
   project_id       = "a2816230-90c0-4acb-9304-e7ed2d30d022"
 
+  connection {
+    type        = "ssh"
+    user        = "root"
+    private_key = "${file("/Users/alvaro/.ssh/id_rsa")}"
+  }
+
+  provisioner "file" {
+    source      = "../nginx.conf"
+    destination = "/tmp/nginx.conf"
+  }
+
+  provisioner "file" {
+    source      = "../scripts/provision.sh"
+    destination = "/tmp/provision.sh"
+  }
+
   provisioner "remote-exec" {
-    script = "../scripts/provision.sh"
+    inline = [
+      "curl -sL -o /tmp/index.html https://github.com/kikitux/myweb1/releases/download/0.0.2/index.html",
+      "cd /tmp",
+      "bash provision.sh",
+    ]
   }
 }
