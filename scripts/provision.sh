@@ -17,7 +17,6 @@ export APTARGS="-qq -o=Dpkg::Use-Pty=0"
 # check if curl is installed
 # install curl if not installed
 which curl || {
-  echo no, curl its not installed 
   apt-get update ${APTARGS}
   apt-get install -y curl ${APTARGS}
 }
@@ -25,7 +24,6 @@ which curl || {
 # check if nginx is installed
 # install nginx if not installed
 which nginx || {
-  echo no, nginx its not installed 
   apt-get update ${APTARGS}
   apt-get install -y nginx ${APTARGS}
 }
