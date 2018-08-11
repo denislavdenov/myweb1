@@ -14,7 +14,7 @@ resource "packet_device" "vmonpacket" {
   connection {
     type        = "ssh"
     user        = "root"
-    private_key = "${file("../priv/id_rsa")}"
+    private_key = "${file("priv/id_rsa")}"
   }
 
   # in case we need the root password
@@ -24,12 +24,12 @@ resource "packet_device" "vmonpacket" {
   }
 
   provisioner "file" {
-    source      = "../../nginx.conf"
+    source      = "../nginx.conf"
     destination = "/tmp/nginx.conf"
   }
 
   provisioner "file" {
-    source      = "../../scripts/provision.sh"
+    source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
   }
 
