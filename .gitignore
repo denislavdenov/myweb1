@@ -1,5 +1,8 @@
 .vagrant/
+.kitchen/
 .terraform/
 ops/priv/
+.ruby-version
+Gemfile.lock
 terraform.tfstate*
 .terraform*

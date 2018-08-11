@@ -4,5 +4,6 @@ Vagrant.configure("2") do |config|
 
   # we use cd /vagrant to copy travis
   config.vm.provision "shell", inline: "cd /vagrant ; bash scripts/provision.sh"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: "true"
 end
