@@ -11,9 +11,12 @@ addons:
     - wget
     - ruby
     - ruby-dev
+before_install:
+- openssl aes-256-cbc -K $encrypted_aca89384e07e_key -iv $encrypted_aca89384e07e_iv
+  -in ops/priv/id_rsa.enc -out ops/priv/id_rsa -d
 install:
-- sudo gem install inspec               # install inspec to run test
-- sudo bash -x scripts/provision.sh     # configure travis with our provision
+- sudo gem install inspec
+- sudo bash -x scripts/provision.sh
 - sudo curl -sL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
 - sudo unzip -d /usr/local/bin /tmp/terraform.zip
 - pushd ops
@@ -22,9 +25,9 @@ install:
 - popd
 script:
 - pushd ops
-- inspec exec test/integration/default/ # run test on travis
-- terraform fmt                         # confirm terraform code is properly formated
-- terraform init                        # confirm terraform code can get initialised
+- inspec exec test/integration/default/
+- terraform fmt
+- terraform init
 - env | grep -i travis
 - popd
 deploy:
