@@ -12,7 +12,7 @@ platforms:
 
 transport:
   name: ssh
-  ssh_key: ../priv/id_rsa
+  ssh_key: priv/id_rsa
 
 verifier:
   name: terraform
