@@ -32,8 +32,13 @@ script:
 - inspec exec test/integration/default/
 - terraform fmt
 - terraform init
-- env | grep -i travis
 - popd
+after_success: |
+  if [  "${TRAVIS_TAG}" ]; then
+    pushd ops
+    kitchen test
+    popd
+  fi
 deploy:
   provider: releases
   api_key:
