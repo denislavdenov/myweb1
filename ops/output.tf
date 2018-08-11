@@ -1,4 +1,4 @@
-output "public_dns" {
+output "public_ip" {
   value = "${packet_device.vmonpacket.access_public_ipv4}"
 }
 

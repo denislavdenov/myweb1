@@ -23,7 +23,7 @@ verifier:
         - operating_system
         - check_pkg
         - check_website
-      hostnames: public_dns
+      hostnames: public_ip
       username: root
 
 suites:

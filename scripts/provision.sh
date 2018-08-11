@@ -16,16 +16,12 @@ export APTARGS="-qq -o=Dpkg::Use-Pty=0"
 
 # check if curl is installed
 # install curl if not installed
-which curl || {
-  apt-get update ${APTARGS}
-  apt-get install -y curl ${APTARGS}
-}
-
 # check if nginx is installed
 # install nginx if not installed
-which nginx || {
+
+which curl nginx || {
   apt-get update ${APTARGS}
-  apt-get install -y nginx ${APTARGS}
+  apt-get install -y curl nginx ${APTARGS}
 }
 
 # stop nginx service
@@ -39,9 +35,9 @@ service nginx stop
 # copy our nginx conf
 cp nginx.conf /etc/nginx/sites-available/default
 
-# start nginx service
-service nginx start
-
-# deploy our zillion dollar website
+# deploy our website
 mkdir -p /var/www/html/
 cp index.html /var/www/html/index.html
+
+# start nginx service
+service nginx start
