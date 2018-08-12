@@ -21,7 +21,7 @@ export APTARGS="-qq -o=Dpkg::Use-Pty=0"
 
 which curl nginx || {
   apt-get update ${APTARGS}
-  apt-get install -y curl nginx ${APTARGS}
+  apt-get install -y curl nginx ${APTARGS} 2>/dev/null
 }
 
 # stop nginx service

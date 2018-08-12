@@ -11,6 +11,11 @@ addons:
     - wget
     - ruby
     - ruby-dev
+    - libpng-dev
+    - zlibc
+    - zlib1g
+    - zlib1g-dev
+
 env:
   global:
   - secure: aMEzLlMdPYVVRl2tvNYh2GFxzdZgR5kKlyCvVpFEpHs/VCW/ZCah1Gao2sWuU0wTnPJsLHREpIOmru9d3iKwsK0xcPZErCcQC1yeQ1tXvt8qjzf4ep8Q7LaGQlugxMUpfHzj4FSdKjAfZ1RK0p3tDyJdmfMqxwS9jGtOskeYKjH/pJpJ2PxIuY2pgb+E+sg1s1M9tKbSh7f9DRh42iBvEC2PMVlrERcnj8m3nsxupl8WuaOeAmdHcwXjAacwUPR1QktvR1rGj8ETDrnq2FUpQWhd9gSQMYRveqxgPIQ2NVP9P3+302LUiFZUCvgMt3zDeoHsYt/MGVhxfaPJOnTGy7L+Xe7GeyveGmJh6lEJ1kNL+WM6y+ceQTrvLhDQjleY1VYk93yDplnqKywKIM9gn5da/Qt7gC/RwsdfDb05qY8ZA5x7OJqCnXFLljQQ7I5LWMsn69odNhwSHfZyQm+3IJvMMU4b/otGKpBmBfXd+KFvBYb+aZAojbrU9kYFdmhLkhbSQcemTr4wtkxbM2xUv/tXsozUi9fnCwFoXJ7C7eAMD/djJeSN2aJDEh+m5QlaTnqThQcHI+mbIjbELTuzDBxKEap4ZvTpRyhH8LZ2YnvKAEj03TJRTRSs0yaXqHWDr2EoJOSwMIfd+X3JDXjZ++GSjJ2KXYBpIdjuO3RSEx4=
@@ -19,6 +24,10 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_aca89384e07e_key -iv $encrypted_aca89384e07e_iv
   -in ops/priv/id_rsa.enc -out ops/priv/id_rsa -d
 install:
+- sudo gem install executable-hooks --version 1.3.2
+- sudo gem install gem-wrappers --version 1.4.0
+- sudo gem install gem-wrappers --version 1.2.7
+- sudo gem install nokogiri --version 1.8.4
 - sudo gem install inspec
 - sudo bash -x scripts/provision.sh
 - sudo curl -sL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
