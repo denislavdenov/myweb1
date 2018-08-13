@@ -37,8 +37,9 @@ script:
 after_success: |
   if [  "${TRAVIS_TAG}" ]; then
     pushd ops
-    # run kitchen test, if fails, destroy
-    kitchen test || kitchen destroy
+    kitchen converge
+    kitchen verify
+    kitchen destroy
     popd
   fi
 deploy:
