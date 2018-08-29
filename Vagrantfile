@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "alvaro/xenial64"
-  config.vm.hostname = "web01"
+  config.vm.hostname = "bananas3"
 
   # we use cd /vagrant to copy travis
   config.vm.provision "shell", inline: "cd /vagrant ; bash scripts/provision.sh"
